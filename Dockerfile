@@ -2,7 +2,7 @@
 # BASE
 ###################
 
-FROM node:16-alpine AS base
+FROM node:20-alpine AS base
 
 WORKDIR /usr/src/app
 
@@ -18,7 +18,7 @@ USER node
 # BUILD
 ###################
 
-FROM node:16-alpine AS build
+FROM node:20-alpine AS build
 
 WORKDIR /usr/src/app
 
@@ -38,7 +38,7 @@ USER node
 # PRODUCTION
 ###################
 
-FROM node:16-alpine AS production
+FROM node:20-alpine AS production
 
 COPY --chown=node:node --from=build /usr/src/app/node_modules ./node_modules
 COPY --chown=node:node --from=build /usr/src/app/dist ./dist
